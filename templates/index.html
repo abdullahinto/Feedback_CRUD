@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5">Your Feedback, Our Success!</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="alert alert-success mt-3">
+            {% for category, message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">
+                {{ form.product.label }}<br>
+                {{ form.product(class="form-control") }}
+            </div>
+            <div class="mb-3">
+                {{ form.message.label }}<br>
+                {{ form.message(class="form-control") }}
+            </div>
+            <button type="submit" class="btn btn-primary">{{ form.submit() }}</button>
+        </form>
+
+        <h2 class="mt-5">Feedbacks</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sno</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Message</th>
+                    <th scope="col">Actions</th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for feedback in feedbacks %}
+                <tr>
+                    <td>{{ loop.index }}</td> <!-- Generates serial numbers dynamically -->
+                    <td>{{ feedback.product }}</td>
+                    <td>{{ feedback.message }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_feedback', id=feedback.id) }}">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('edit_feedback', id=feedback.id) }}">
+                            <button type="submit" class="btn btn-info">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
