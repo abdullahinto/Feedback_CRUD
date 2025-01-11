@@ -12,7 +12,7 @@ This is a simple CRUD (Create, Read, Update, Delete) web application.
 ## Technologies Used
 
 - Frontend: HTML, CSS, JavaScript
-- Backend: Python
+- Backend: Python (Flask)
 - Database: SQLite
 
 ## Installation
