@@ -12,8 +12,8 @@ This is a simple CRUD (Create, Read, Update, Delete) web application.
 ## Technologies Used
 
 - Frontend: HTML, CSS, JavaScript
-- Backend: Node.js, Express
-- Database: MongoDB
+- Backend: Python
+- Database: SQLite
 
 ## Installation
 
