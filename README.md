@@ -19,7 +19,7 @@ This is a simple CRUD (Create, Read, Update, Delete) web application.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/crud-application.git
+    git clone https://github.com/abdullahinto/Feedback_CRUD.git
     ```
 2. Navigate to the project directory:
     ```sh
